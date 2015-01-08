@@ -13,6 +13,6 @@ public class MovieTorrents extends Activity{
 		String movieTitle = getIntent().getExtras().getString(MainActivity.TAG_MOVIE_TITLE);
 		
 		TextView tvMovieTitle = (TextView)findViewById(R.id.textViewMovieTitle);
-		tvMovieTitle.setText(TorrentsFetcher.getTorrents());
+		//tvMovieTitle.setText(TorrentsFetcher.getTorrents());
 	}
 }
