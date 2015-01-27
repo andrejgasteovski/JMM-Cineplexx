@@ -22,10 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-                <activity
+        <activity
             android:name=".MovieTorrents"
             android:label="Movie Torrents" >
         </activity>
+        <activity
+            android:name=".LoadingScreenActivity"
+            android:label="Loading Screen" >
+        </activity>
+        
     </application>
 
 </manifest>
