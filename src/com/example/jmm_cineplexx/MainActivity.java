@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends ListActivity {
 
@@ -30,6 +31,8 @@ public class MainActivity extends ListActivity {
 		Log.d("cineplexx", "Movie titles are fetched.");
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, movies);
 		setListAdapter(adapter);
+		//ListView listview = (ListView) findViewById(R.id.list);
+	    //listview.setAdapter(new MoviesAdapter(this, new String[] { "data1", "data2" }));
 	}
 	
 	private void setOnClickListener(){

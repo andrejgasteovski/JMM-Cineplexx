@@ -19,9 +19,12 @@ public class MovieTitlesFetcher {
 	
 	public static List<String> getMovieTitles(){
 		List<String> movies = new ArrayList<String>();
+		//samo e dodaden kodot za objektite od movie, drugite funkcionalnotsi si stojat
+		List<Movie> movies_obj = new ArrayList<Movie>();
 		    AsyncTask<Void, Void, List<String>> asyncTask = new AsyncTask<Void, Void, List<String>>(){
 				@Override
 				protected List<String> doInBackground(Void... params) {
+					List<Movie> movies_obj = new ArrayList<Movie>();
 					List<String> movies = new ArrayList<String>();
 					
 					try{
@@ -33,8 +36,12 @@ public class MovieTitlesFetcher {
 						
 						String line1 = null;
 						String line2 = null;
+						String img_url = "";
+						Movie movie = new Movie();
 						while((line2 = br.readLine()) != null){
-							if(line2.contains("|")){
+							if (line2.contains("original=\""))
+								img_url = line2.split("\"")[5];
+							else if(line2.contains("|")){
 								if(line1.length() > 6){
 									line1 = line1.trim();
 									  
@@ -43,6 +50,17 @@ public class MovieTitlesFetcher {
 										line1 = line1.substring(3, line1.length() - 4);
 										movies.add(line1);
 										Log.d("cineplexx", line1);
+										
+										//ovoa e dodadeno
+										line2 = line2.trim();
+										line2 = line2.substring(3, line2.length() - 4);
+										String parts[] = line2.split("|");
+										movie = new Movie();
+										movie.setTitle(line1);
+										movie.setGenre(parts[0].trim());
+										movie.setDuration(parts[1].trim());
+										movie.setImage(img_url);
+										Log.d("MOVIE", movie.toString());
 									}
 								  }
 							}
